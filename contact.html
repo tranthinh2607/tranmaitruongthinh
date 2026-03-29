@@ -132,11 +132,7 @@
                 e.preventDefault();
                 
                 const formData = new FormData(this);
-                const data = {
-                  name: formData.get("name"),
-                  email: formData.get("email"),
-                  message: formData.get("message")
-                };
+                const scriptURL = "YOUR_GOOGLE_SCRIPT_URL_HERE"; // <-- DÁN LINK GOOGLE SCRIPT VÀO ĐÂY
                 
                 const btn = this.querySelector('button[type="submit"]');
                 const origText = btn.textContent;
@@ -146,10 +142,9 @@
                 const msgBox = document.getElementById("formResponseMessage");
                 msgBox.style.display = "none";
                 
-                fetch("/api/contact", {
+                fetch(scriptURL, {
                   method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(data)
+                  body: formData
                 })
                 .then(res => res.json())
                 .then(result => {
@@ -157,13 +152,21 @@
                   btn.disabled = false;
                   
                   msgBox.style.display = "block";
-                  if (result.success) {
-                    msgBox.style.color = "green";
-                    msgBox.textContent = "✅ Gửi thành công! Thông điệp của bạn đã được ghi nhận.";
-                    this.reset();
+                  
+                  if (result.result === "success" || result.result === "error") {
+                    if (result.result === "success") {
+                      msgBox.style.color = "green";
+                      msgBox.textContent = "✅ Gửi thành công! Lịch sử đã được lữu vào Google Sheets.";
+                      this.reset();
+                    } else {
+                      msgBox.style.color = "red";
+                      msgBox.textContent = "❌ Lỗi hệ thống Google Sheets.";
+                    }
                   } else {
-                    msgBox.style.color = "red";
-                    msgBox.textContent = "❌ " + (result.error || "Gửi thất bại.");
+                     // Nếu server khác trả về
+                     msgBox.style.color = "green";
+                     msgBox.textContent = "✅ Đã gửi phản hồi!";
+                     this.reset();
                   }
                 })
                 .catch(err => {
@@ -171,7 +174,7 @@
                   btn.disabled = false;
                   msgBox.style.display = "block";
                   msgBox.style.color = "red";
-                  msgBox.textContent = "❌ Lỗi kết nối tới Server Backend!";
+                  msgBox.textContent = "❌ Lỗi kết nối tới Máy chủ Google!";
                 });
               });
             </script>

@@ -160,7 +160,8 @@
                       this.reset();
                     } else {
                       msgBox.style.color = "red";
-                      msgBox.textContent = "❌ Lỗi hệ thống Google Sheets.";
+                      var errorDetails = result.error ? (typeof result.error === 'object' ? JSON.stringify(result.error) : result.error) : 'Lỗi không xác định';
+                      msgBox.textContent = "❌ Lỗi hệ thống Google Apps Script: " + errorDetails;
                     }
                   } else {
                      // Nếu server khác trả về

@@ -1,0 +1,162 @@
+<!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rV6yesIygoVKTD6QLf_iCa9eiIIHqZ0&libraries=geometry"></script>
+    <!-- Vendor JS -->
+    <script src="vendor/jQuery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="vendor/g-map/gmap.js"></script>
+    <!-- Main JS -->
+    <script src="js/script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterLinks = document.querySelectorAll(
+          ".custom-category-nav .nav-link",
+        );
+        const articles = Array.from(
+          document.querySelectorAll(".blog-post-card"),
+        );
+        const paginationContainer =
+          document.querySelector(".custom-pagination");
+
+        const articlesPerPage = 6;
+        let currentPage = 1;
+
+        function updateDisplay() {
+          let activeLink = document.querySelector(
+            ".custom-category-nav .nav-link.active",
+          );
+          const selectedCategory = activeLink
+            ? activeLink.textContent.trim()
+            : "All";
+
+          let visibleArticles = [];
+          articles.forEach((article) => {
+            const tagEl = article.querySelector(".blog-post-tag a");
+            const articleCategory = tagEl ? tagEl.textContent.trim() : "";
+
+            article.style.setProperty("display", "none", "important");
+
+            if (
+              selectedCategory === "All" ||
+              articleCategory === selectedCategory
+            ) {
+              visibleArticles.push(article);
+            }
+          });
+
+          const totalPages =
+            Math.ceil(visibleArticles.length / articlesPerPage) || 1;
+          if (currentPage > totalPages) currentPage = totalPages;
+
+          const startIndex = (currentPage - 1) * articlesPerPage;
+          const endIndex = startIndex + articlesPerPage;
+
+          visibleArticles.slice(startIndex, endIndex).forEach((article) => {
+            article.style.setProperty("display", "flex", "important");
+          });
+
+          if (paginationContainer) {
+            renderPagination(totalPages);
+          }
+        }
+
+        function renderPagination(totalPages) {
+          paginationContainer.innerHTML = "";
+
+          // Prev
+          const prevLi = document.createElement("li");
+          const isFirst = currentPage === 1;
+          prevLi.className = `page-item ${isFirst ? "disabled" : ""}`;
+          prevLi.innerHTML = `<a class="page-link d-flex align-items-center justify-content-center text-dark" href="#" aria-label="Previous" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; transition: all 0.3s; opacity: ${isFirst ? "0.5" : "1"}; pointer-events: ${isFirst ? "none" : "auto"};"><i class="fa fa-angle-left"></i></a>`;
+          prevLi.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!isFirst) {
+              currentPage--;
+              window.scrollTo({
+                top: document.querySelector(".blog").offsetTop - 50,
+                behavior: "smooth",
+              });
+              updateDisplay();
+            }
+          });
+          paginationContainer.appendChild(prevLi);
+
+          // Pages
+          for (let i = 1; i <= totalPages; i++) {
+            const li = document.createElement("li");
+            const isActive = i === currentPage;
+            li.className = `page-item ${isActive ? "active" : ""}`;
+
+            const a = document.createElement("a");
+            a.className = `page-link d-flex align-items-center justify-content-center ${isActive ? "" : "text-dark"}`;
+            a.href = "#";
+            a.textContent = i;
+
+            let activeStyles =
+              "width: 45px; height: 45px; border-radius: 50%; border: 1px solid #111; background-color: #111; color: #fff !important; transition: all 0.3s;";
+            let inactiveStyles =
+              "width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; transition: all 0.3s;";
+
+            a.style.cssText = isActive ? activeStyles : inactiveStyles;
+
+            li.appendChild(a);
+            li.addEventListener("click", (e) => {
+              e.preventDefault();
+              currentPage = i;
+              window.scrollTo({
+                top: document.querySelector(".blog").offsetTop - 50,
+                behavior: "smooth",
+              });
+              updateDisplay();
+            });
+            paginationContainer.appendChild(li);
+          }
+
+          // Next
+          const nextLi = document.createElement("li");
+          const isLast = currentPage === totalPages;
+          nextLi.className = `page-item ${isLast ? "disabled" : ""}`;
+          nextLi.innerHTML = `<a class="page-link d-flex align-items-center justify-content-center text-dark" href="#" aria-label="Next" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; transition: all 0.3s; opacity: ${isLast ? "0.5" : "1"}; pointer-events: ${isLast ? "none" : "auto"};"><i class="fa fa-angle-right"></i></a>`;
+          nextLi.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!isLast) {
+              currentPage++;
+              window.scrollTo({
+                top: document.querySelector(".blog").offsetTop - 50,
+                behavior: "smooth",
+              });
+              updateDisplay();
+            }
+          });
+          paginationContainer.appendChild(nextLi);
+        }
+
+        if (filterLinks) {
+          filterLinks.forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+
+              filterLinks.forEach((l) => {
+                l.classList.remove("active");
+                l.style.backgroundColor = "#f8f9fa";
+                l.style.color = "#333";
+                l.classList.add("text-dark");
+              });
+
+              this.classList.add("active");
+              this.style.backgroundColor = "#333";
+              this.style.color = "#fff";
+              this.classList.remove("text-dark");
+
+              currentPage = 1; // Reset to page 1 on filter change
+              updateDisplay();
+            });
+          });
+        }
+
+        // Initial render
+        updateDisplay();
+      });
+    </script>
+  

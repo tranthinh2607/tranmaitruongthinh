@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Blogge | Personal Blog Site</title>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Blogge | Personal Blog Site" />
+  <meta property="og:description" content="Personal blog site template for articles and updates." />
+  <meta property="og:image" content="images/blog/blog-single.png" />
+  <meta property="og:url" content="https://example.com" />
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Theme Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
+  <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
+</head>
+
+<body>
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navbar Start -->
+  <nav class="main-nav navbar navbar-expand-lg">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img class="logo-main" src="images/logo.svg" alt="logo" />
+      </a>
+      <!-- Toogle Button -->
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#mainNav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-list" id="mainNav">
+        <!-- Navigation Links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="category.html">Category </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <!-- Social Link -->
+        <ul class="main-nav-social">
+          <li>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <section class="blog">
+    <div class="container-fluid px-lg-5" style="max-width: 1150px; margin: 0 auto">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <!-- Search Widget -->
+          <div class="blog-post-widget mb-4" style="margin-bottom: 30px">
+            <div class="latest-widget-title">
+              <h2>Search</h2>
+            </div>
+            <form action="#" class="search-form">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search here..." required
+                  style="padding: 23px 15px; border-radius: 0" />
+                <div class="input-group-append">
+                  <button class="btn btn-dark" type="submit" style="border-radius: 0; padding: 0 20px">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <ul class="nav nav-pills justify-content-center mb-5 custom-category-nav" style="gap: 10px">
+            <li class="nav-item">
+              <a class="nav-link active px-4 py-2" href="#" style="
+                    border-radius: 30px;
+                    font-weight: 500;
+                    transition: all 0.3s;
+                    background-color: #111;
+                    color: #fff;
+                  ">All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-4 py-2 text-dark" href="#" style="
+                    border-radius: 30px;
+                    font-weight: 500;
+                    transition: all 0.3s;
+                    background-color: #f8f9fa;
+                  ">Travel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-4 py-2 text-dark" href="#" style="
+                    border-radius: 30px;
+                    font-weight: 500;
+                    transition: all 0.3s;
+                    background-color: #f8f9fa;
+                  ">Lifestyle</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-4 py-2 text-dark" href="#" style="
+                    border-radius: 30px;
+                    font-weight: 500;
+                    transition: all 0.3s;
+                    background-color: #f8f9fa;
+                  ">Nature</a>
+            </li>
+          </ul>
+
+          <!-- Articles List 1 Column -->
+          <div class="row w-100 m-0">
+            <!-- Cột duy nhất -->
+            <div id="blog-posts-container" class="col-12 d-flex flex-column" style="gap: 30px; padding: 0">
+              <!-- Articles will be dynamically injected here by the script below -->
+            </div>
+          </div>
+          <!-- Dynamic Blog Posts will be rendered here -->
+
+          <!-- Pagination -->
+          <div class="blog-post-pagination mt-5 mb-5 pb-4">
+            <nav aria-label="Page navigation">
+              <ul class="pagination custom-pagination justify-content-center align-items-center" style="gap: 12px">
+                <li class="page-item">
+                  <a class="page-link d-flex align-items-center justify-content-center text-dark" href="#"
+                    aria-label="Previous" style="
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: 1px solid #ddd;
+                        transition: all 0.3s;
+                      ">
+                    <i class="fa fa-angle-left"></i>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link d-flex align-items-center justify-content-center" href="#" style="
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: none;
+                        background-color: #111;
+                        color: #fff;
+                        font-weight: 600;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                      ">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link d-flex align-items-center justify-content-center text-dark" href="#" style="
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: 1px solid #ddd;
+                        transition: all 0.3s;
+                      ">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link d-flex align-items-center justify-content-center text-dark" href="#" style="
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: 1px solid #ddd;
+                        transition: all 0.3s;
+                      ">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link d-flex align-items-center justify-content-center text-dark" href="#"
+                    aria-label="Next" style="
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        border: 1px solid #ddd;
+                        transition: all 0.3s;
+                      ">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="instagram">
+    <a href="#">
+      <i class="fa fa-instagram" aria-hidden="true"></i>
+      <span>@Mary_Astor</span>
+    </a>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="instagram-item">
+            <div class="instagram-item-thum">
+              <img src="images/blog/case-studies-1.png" alt="image" />
+            </div>
+            <div class="instagram-item-thum">
+              <img src="images/blog/case-studies-2.png" alt="image" />
+            </div>
+            <div class="instagram-item-thum">
+              <img src="images/blog/case-studies-3.png" alt="image" />
+            </div>
+            <div class="instagram-item-thum">
+              <img src="images/blog/case-studies-4.png" alt="image" />
+            </div>
+            <div class="instagram-item-thum">
+              <img src="images/blog/case-studies-5.png" alt="image" />
+            </div>
+            <div class="instagram-item-thum">
+              <img src="images/blog/case-studies-6.png" alt="image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 mx-auto text-center">
+          <div class="footer-logo">
+            <img src="images/logo.svg" alt="logo" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <div class="footer-nav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="category.html">Category </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <div class="sociale-icon">
+            <ul>
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="copy-right">
+            <p>
+              © Copyright <span id="copyrightYear"></span> - All Rights
+              Reserved by
+              <a href="https://staticmania.com/" target="_blank">StaticMania</a>
+              Distributed By
+              <a href="https://themewagon.com/" target="blank">ThemeWagon</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Map -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rV6yesIygoVKTD6QLf_iCa9eiIIHqZ0&libraries=geometry"></script>
+  <!-- Vendor JS -->
+  <script src="vendor/jQuery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="vendor/slick/slick.min.js"></script>
+  <script src="vendor/g-map/gmap.js"></script>
+  <!-- Main JS -->
+  <script src="js/script.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const postData = [
+        {
+          img: "blog-thum-2.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-1.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-2.png",
+          category: "Nature",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-1.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-2.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-1.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-2.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-1.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-2.png",
+          category: "Nature",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-1.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-2.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+        {
+          img: "blog-thum-1.png",
+          category: "Travel",
+          title: "Five Things You Need to Know",
+          author: "Mary",
+          excerpt:
+            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        },
+      ];
+
+      const container = document.getElementById("blog-posts-container");
+      if (container) {
+        postData.forEach((post) => {
+          container.innerHTML += `
+            <article class="blog-post h-100 d-flex flex-column flex-md-row blog-post-card w-100 mb-4" style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); border: 1px solid #f0f0f0; margin: 0;">
+              <div class="blog-post-thumb position-relative d-flex align-items-center justify-content-center" style="margin: 0; padding: 0; width: 100%; height: 100%; flex-basis: 40%; max-width: 40%; min-height: 280px;">
+                <a href="single-blog.html" class="d-block w-100 h-100" style="margin: 0; padding: 0">
+                  <img src="images/blog/${post.img}" alt="blog-thum" class="img-fluid m-0 p-0" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0;" />
+                </a>
+              </div>
+              <div class="blog-post-content p-3 d-flex flex-column flex-grow-1 justify-content-center" style="margin: 0; width: 100%; flex-grow: 1; flex-basis: 60%; max-width: 60%; padding: 30px !important;">
+                <div class="blog-post-tag mb-1 mt-1">
+                  <a href="category.html" class="badge badge-dark text-uppercase px-2 py-1" style="font-size: 0.85rem; letter-spacing: 1px">${post.category}</a>
+                </div>
+                <div class="blog-post-title mb-1">
+                  <h3 class="h6" style="line-height: 1.4; margin: 0; font-size: 1.5rem">
+                    <a href="single-blog.html" class="text-dark font-weight-bold">${post.title}</a>
+                  </h3>
+                </div>
+                <div class="blog-post-meta mb-2 text-muted" style="font-size: 0.85rem">
+                  <ul class="list-inline mb-0 d-flex flex-wrap align-items-center" style="gap: 5px">
+                    <li class="list-inline-item m-0">By <a href="about.html" class="text-dark font-weight-bold">${post.author}</a></li>
+                  </ul>
+                </div>
+                <p class="text-muted flex-grow-1 mb-2" style="font-size: 0.95rem; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                  ${post.excerpt}
+                </p>
+                <a href="single-blog.html" class="blog-post-action text-uppercase font-weight-bold mt-auto pt-2 border-top d-inline-block w-100" style="font-size: 0.85rem; letter-spacing: 1px; color: #111;">read more <i class="fa fa-angle-right ml-1"></i></a>
+              </div>
+            </article>
+          `;
+        });
+      }
+
+      const filterLinks = document.querySelectorAll(
+        ".custom-category-nav .nav-link",
+      );
+      const articles = Array.from(
+        document.querySelectorAll(".blog-post-card"),
+      );
+      const paginationContainer =
+        document.querySelector(".custom-pagination");
+
+      const articlesPerPage = 6;
+      let currentPage = 1;
+
+      function updateDisplay() {
+        let activeLink = document.querySelector(
+          ".custom-category-nav .nav-link.active",
+        );
+        const selectedCategory = activeLink
+          ? activeLink.textContent.trim()
+          : "All";
+
+        let visibleArticles = [];
+        articles.forEach((article) => {
+          const tagEl = article.querySelector(".blog-post-tag a");
+          const articleCategory = tagEl ? tagEl.textContent.trim() : "";
+
+          article.style.setProperty("display", "none", "important");
+
+          if (
+            selectedCategory === "All" ||
+            articleCategory === selectedCategory
+          ) {
+            visibleArticles.push(article);
+          }
+        });
+
+        const totalPages =
+          Math.ceil(visibleArticles.length / articlesPerPage) || 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const startIndex = (currentPage - 1) * articlesPerPage;
+        const endIndex = startIndex + articlesPerPage;
+
+        visibleArticles.slice(startIndex, endIndex).forEach((article) => {
+          article.style.setProperty("display", "flex", "important");
+        });
+
+        if (paginationContainer) {
+          renderPagination(totalPages);
+        }
+      }
+
+      function renderPagination(totalPages) {
+        paginationContainer.innerHTML = "";
+
+        // Prev
+        const prevLi = document.createElement("li");
+        const isFirst = currentPage === 1;
+        prevLi.className = `page-item ${isFirst ? "disabled" : ""}`;
+        prevLi.innerHTML = `<a class="page-link d-flex align-items-center justify-content-center text-dark" href="#" aria-label="Previous" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; transition: all 0.3s; opacity: ${isFirst ? "0.5" : "1"}; pointer-events: ${isFirst ? "none" : "auto"};"><i class="fa fa-angle-left"></i></a>`;
+        prevLi.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (!isFirst) {
+            currentPage--;
+            window.scrollTo({
+              top: document.querySelector(".blog").offsetTop - 50,
+              behavior: "smooth",
+            });
+            updateDisplay();
+          }
+        });
+        paginationContainer.appendChild(prevLi);
+
+        // Pages
+        for (let i = 1; i <= totalPages; i++) {
+          const li = document.createElement("li");
+          const isActive = i === currentPage;
+          li.className = `page-item ${isActive ? "active" : ""}`;
+
+          const a = document.createElement("a");
+          a.className = `page-link d-flex align-items-center justify-content-center ${isActive ? "" : "text-dark"}`;
+          a.href = "#";
+          a.textContent = i;
+
+          let activeStyles =
+            "width: 45px; height: 45px; border-radius: 50%; border: 1px solid #111; background-color: #111; color: #fff !important; transition: all 0.3s;";
+          let inactiveStyles =
+            "width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; transition: all 0.3s;";
+
+          a.style.cssText = isActive ? activeStyles : inactiveStyles;
+
+          li.appendChild(a);
+          li.addEventListener("click", (e) => {
+            e.preventDefault();
+            currentPage = i;
+            window.scrollTo({
+              top: document.querySelector(".blog").offsetTop - 50,
+              behavior: "smooth",
+            });
+            updateDisplay();
+          });
+          paginationContainer.appendChild(li);
+        }
+
+        // Next
+        const nextLi = document.createElement("li");
+        const isLast = currentPage === totalPages;
+        nextLi.className = `page-item ${isLast ? "disabled" : ""}`;
+        nextLi.innerHTML = `<a class="page-link d-flex align-items-center justify-content-center text-dark" href="#" aria-label="Next" style="width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; transition: all 0.3s; opacity: ${isLast ? "0.5" : "1"}; pointer-events: ${isLast ? "none" : "auto"};"><i class="fa fa-angle-right"></i></a>`;
+        nextLi.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (!isLast) {
+            currentPage++;
+            window.scrollTo({
+              top: document.querySelector(".blog").offsetTop - 50,
+              behavior: "smooth",
+            });
+            updateDisplay();
+          }
+        });
+        paginationContainer.appendChild(nextLi);
+      }
+
+      if (filterLinks) {
+        filterLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            filterLinks.forEach((l) => {
+              l.classList.remove("active");
+              l.style.backgroundColor = "#f8f9fa";
+              l.style.color = "#333";
+              l.classList.add("text-dark");
+            });
+
+            this.classList.add("active");
+            this.style.backgroundColor = "#333";
+            this.style.color = "#fff";
+            this.classList.remove("text-dark");
+
+            currentPage = 1; // Reset to page 1 on filter change
+            updateDisplay();
+          });
+        });
+      }
+
+      // Initial render
+      updateDisplay();
+    });
+  </script>
+</body>
+
+</html>

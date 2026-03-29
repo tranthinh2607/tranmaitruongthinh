@@ -12,6 +12,11 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Vui lòng điền đủ Tên, Email và Nội dung.' });
   }
 
+  // Debugging log for Vercel
+  console.log("Vercel GMAIL_USER exists?: ", !!process.env.GMAIL_USER);
+  console.log("Vercel GMAIL_APP_PASSWORD exists?: ", !!process.env.GMAIL_APP_PASSWORD);
+  console.log("Request body: ", { name, email, message });
+
   try {
     // Khởi tạo cầu nối NodeMailer sử dụng GMAIL SMTP
     // Cần phải có 2 biến GMAIL_USER và GMAIL_APP_PASSWORD gắn trên Vercel mới hoạt động
@@ -57,7 +62,7 @@ module.exports = async function handler(req, res) {
     // Gửi tín hiệu thành công cho Client báo xanh lá
     return res.status(200).json({ success: true, message: 'Đã gửi thành công qua hệ thống Email Vercel Serverless!' });
   } catch (error) {
-    console.error('Lỗi khi bắn mail qua Serverless:', error);
-    return res.status(500).json({ error: 'Lỗi cấu hình Cổng Vercel ở biến môi trường hoặc mất mạng.' });
+    console.error('Lỗi khi bắn mail qua Serverless:', error.message || error);
+    return res.status(500).json({ error: 'Lỗi máy chủ Vercel: ' + (error.message || 'Mất mạng') });
   }
 }
